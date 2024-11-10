@@ -1,0 +1,26 @@
+const int pirPin = 2;      
+const int buzzerPin = 8;
+
+void setup() {
+  pinMode(pirPin, INPUT);         
+  pinMode(buzzerPin, OUTPUT);       
+
+  Serial.begin(9600);
+  Serial.println("Intrusion Detection System Initialized");
+}
+
+void loop() {
+  
+  int pirState = digitalRead(pirPin);
+
+  if (pirState == HIGH) {     
+    Serial.println("Intruder detected!");
+    digitalWrite(buzzerPin, HIGH); 
+    delay(500);                   
+    digitalWrite(buzzerPin, LOW);  
+  } else {
+    digitalWrite(buzzerPin, LOW);  
+  }
+
+  delay(100); 
+}
